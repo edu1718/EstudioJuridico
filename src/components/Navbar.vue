@@ -87,9 +87,16 @@ export default {
     backdrop-filter: blur(12px);      /* efecto vidrio */
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    color: #fff;
 }
-
+.navbar.scrolled .nav-link{
+  color: #fff;
+}
+.navbar.scrolled .logo{
+  color: #fff;
+}
+.navbar.scrolled .hamburger span{
+  background-color: #fff;
+}
 /* === NAV CONTAINER === */
 .nav-container {
     width: 90%;
@@ -189,10 +196,6 @@ export default {
 .hamburger.open span:nth-child(3) {
     transform: translateY(-9px) rotate(-45deg);
 }
-.scrolled-ham{
-  color: #fff;
-}
-
 /* ====== MENÚ MÓVIL DESDE LA DERECHA ====== */
 @media (max-width: 900px) {
 
