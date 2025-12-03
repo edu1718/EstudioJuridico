@@ -8,7 +8,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 export default defineConfig({
   // 🎯 IMPORTANTE: Agrega esta línea para GitHub Pages
   // Reemplaza 'BuffetAbogados' con el nombre exacto de tu repositorio si fuera diferente
-  base: '/BuffetAbogados/', 
+  base: '/EstudioJuridico/', 
   plugins: [
     vue(),
     vueDevTools(),
