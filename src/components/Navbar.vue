@@ -7,7 +7,7 @@
       </div>
 
       <!-- Botón Hamburguesa -->
-      <div class="hamburger" :class="{ open: menuOpen }" @click="toggleMenu">
+      <div class="hamburger" :class="{ open: menuOpen }" @click="toggleMenu" ref="hamburguesaRef">
         <span></span>
         <span></span>
         <span></span>
@@ -38,6 +38,7 @@ export default {
   setup() {
     const menuOpen = ref(false);
     const isScrolled = ref(false);
+    const hamburguesaRef = ref(null); // ← referencia al div
 
     const toggleMenu = () => {
       menuOpen.value = !menuOpen.value;
@@ -45,13 +46,23 @@ export default {
 
     onMounted(() => {
       window.addEventListener("scroll", () => {
-        isScrolled.value = window.scrollY > 50;
+        const scrolled = window.scrollY > 50;
+        isScrolled.value = scrolled;
+
+        if (hamburguesaRef.value) {
+          if (scrolled) {
+            hamburguesaRef.value.classList.add("scrolled-ham");
+          } else {
+            hamburguesaRef.value.classList.remove("scrolled-ham");
+          }
+        }
       });
     });
 
     return {
       menuOpen,
       isScrolled,
+      hamburguesaRef,
       toggleMenu
     };
   }
@@ -72,12 +83,12 @@ export default {
 
 /* NAVBAR CON EFECTO GLASS AL HACER SCROLL */
 .navbar.scrolled {
-    background: rgba(0, 0, 0, 0.55); /* tono oscuro con transparencia */
+    background: rgba(0, 0, 0, 0.25); /* tono oscuro con transparencia */
     backdrop-filter: blur(12px);      /* efecto vidrio */
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    color: #fff;
 }
-
 
 /* === NAV CONTAINER === */
 .nav-container {
@@ -110,7 +121,7 @@ export default {
 /* Efecto moderno */
 .nav-link {
     position: relative;
-    color: #fff;
+    color: #1D293D;
     text-decoration: none;
     font-size: 15px;
     opacity: .85;
@@ -127,7 +138,7 @@ export default {
     left: 0;
     width: 0%;
     height: 2px;
-    background: #25d366;
+    background: #3B82F6;
     transition: width .3s ease;
 }
 .nav-link:hover::after {
@@ -144,7 +155,7 @@ export default {
     display: flex;
     gap: 5px;
     opacity: 1 !important;
-    color: #000;
+    color: #fff;
     transition: .3s;
 }
 .whatsapp-btn:hover {
@@ -165,7 +176,7 @@ export default {
 .hamburger span {
     width: 100%;
     height: 3px;
-    background: #fff;
+    background: #1D293D;
     border-radius: 5px;
     transition: .4s ease;
 }
@@ -178,7 +189,9 @@ export default {
 .hamburger.open span:nth-child(3) {
     transform: translateY(-9px) rotate(-45deg);
 }
-
+.scrolled-ham{
+  color: #fff;
+}
 
 /* ====== MENÚ MÓVIL DESDE LA DERECHA ====== */
 @media (max-width: 900px) {
@@ -193,8 +206,8 @@ export default {
         right: 0;
         height: 100vh;
         width: 270px;
-
-        background: rgba(0,0,0,0.95);
+        border-left: 1px solid #1D293D;
+        background: #fff;
         backdrop-filter: blur(6px);
 
         flex-direction: column;

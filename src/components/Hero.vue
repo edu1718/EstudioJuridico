@@ -3,11 +3,11 @@
     <div class="hero-content">
       
       <h1 data-aos="fade-up">
-        Defensa Penal Especializada para Proteger tu Libertad
+        Defendemos tu libertad. Actuamos en minutos
       </h1>
 
       <p class="subtext" data-aos="fade-up" data-aos-delay="150">
-        Atención inmediata y confidencial las 24 horas.
+        Atención inmediata
       </p>
 
       <div class="cta-container" data-aos="zoom-in" data-aos-delay="250">
@@ -20,7 +20,7 @@
         </a>
 
         <a href="#contacto" class="cta-secundario">
-          Solicitar Evaluación de Caso
+          ⚖️ Evaluar mi caso ahora
         </a>
       </div>
 
@@ -97,7 +97,7 @@ export default {
 .cta-principal {
     background: #25D366;
     padding: 12px 20px;
-    color: #000;
+    color: #fff;
     font-weight: bold;
     text-decoration: none;
     border-radius: 6px;
@@ -116,8 +116,8 @@ export default {
 .cta-secundario {
     background: transparent;
     padding: 12px 20px;
-    color: #fff;
-    border: 1px solid #fff;
+    color: #1D293D;
+    border: 1px solid #1D293D;
     text-decoration: none;
     border-radius: 6px;
     transition: 0.2s ease;
@@ -125,7 +125,7 @@ export default {
 }
 
 .cta-secundario:hover {
-    background: rgba(255,255,255,0.15);
+    background:#E2E8F0;
 }
 
 /* Icono */
@@ -172,8 +172,6 @@ export default {
     }
 }
 
-
-
 .sellos {
     margin-top: 30px;
     display: flex;
@@ -182,11 +180,11 @@ export default {
 }
 
 .sello {
-    background: #1a1a1a;
+    background: #fff;
     padding: 8px 14px;
     border-radius: 6px;
     font-size: 14px;
-    border: 1px solid #333;
+    border: 1px solid #1D293D;
 }
 
 .urgencia {
@@ -198,11 +196,11 @@ export default {
 .hero-image {
     width: 50%;
     height: 450px;
-    background-image: url('abogado.jpg');
-    background-size: cover;
-    background-position: center;
     border-radius: 10px;
+    overflow: hidden;
 }
+
+
 /* ===== MÓVIL: convertir en CUADRADO perfecto ===== */
 @media (max-width: 764px) {
   .hero-image {

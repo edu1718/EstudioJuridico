@@ -4,19 +4,26 @@
 
       <!-- Frase poderosa -->
       <h2 class="confianza-title" data-aos="fade-up">
-        Cada caso es único. Nuestra misión es proteger tu libertad.
+        Cada caso es único. Nuestra misión es proteger tu libertad con estrategia y experiencia.
       </h2>
 
       <!-- Abogado principal -->
       <div class="abogado" data-aos="fade-up" data-aos-delay="150">
         <img :src="abogadoImg" alt="Abogado Principal" class="abogado-img" />
+
         <div class="abogado-info">
-          <h3>Dr. Juan Pérez — Abogado Penalista</h3>
+          <h3>Dr. Juan Pérez — Abogado Penalista Certificado</h3>
+
           <p>
-            Con más de <strong>12 años de experiencia</strong> en litigación penal,
-            he defendido casos de alta complejidad: detenciones, flagrancia,
-            delitos graves y procesos urgentes. Mi compromiso es brindar una defensa
-            sólida, estratégica y completamente confidencial.
+            Con más de <strong>12 años de experiencia real</strong> en litigación penal,
+            he defendido a personas en situaciones críticas: detenciones, flagrancia,
+            acusaciones graves y procesos que requieren intervención inmediata.
+            Mi compromiso es brindarte una defensa técnica, estratégica y
+            totalmente confidencial.
+          </p>
+
+          <p class="badge-cert">
+            ⚖️ Especialista en derecho penal | Registro verificado
           </p>
         </div>
       </div>
@@ -24,8 +31,8 @@
       <!-- MÉTRICAS -->
       <div class="metricas">
         <div class="card-metrica" data-aos="zoom-in" data-aos-delay="100">
-          <h4 class="count" data-target="95" data-suffix="%">0%</h4>
-          <p>Clientes satisfechos</p>
+          <h4 class="count" data-target="600" data-suffix="+">0+</h4>
+          <p>Casos atendidos</p>
         </div>
 
         <div class="card-metrica" data-aos="zoom-in" data-aos-delay="200">
@@ -34,8 +41,8 @@
         </div>
 
         <div class="card-metrica" data-aos="zoom-in" data-aos-delay="300">
-          <h4 class="count" data-target="600" data-suffix="+">0+</h4>
-          <p>Casos atendidos</p>
+          <h4 class="count" data-target="95" data-suffix="%">0%</h4>
+          <p>Clientes satisfechos</p>
         </div>
 
         <div class="card-metrica" data-aos="zoom-in" data-aos-delay="400">
@@ -48,33 +55,54 @@
       <div class="opiniones">
         <div class="opinion-card" data-aos="fade-right" data-aos-delay="100">
           <p class="stars">★★★★★</p>
-          <p>"Gracias a su ayuda salí en libertad el mismo día de mi detención. Profesional y claro."</p>
+          <p>
+            "Gracias a su intervención salí en libertad el mismo día.
+            Claro, directo y totalmente comprometido."
+          </p>
           <span>- Carlos R.</span>
         </div>
 
         <div class="opinion-card" data-aos="fade-up" data-aos-delay="250">
           <p class="stars">★★★★★</p>
-          <p>"Lo contacté a las 2 AM por una intervención policial. Respondió rápido y resolvió todo."</p>
+          <p>
+            "Lo contacté a las 2 AM por una detención. Respondió en minutos
+            y evitó que el caso pase a mayores. Excelente profesional."
+          </p>
           <span>- Andrea P.</span>
         </div>
 
         <div class="opinion-card" data-aos="fade-left" data-aos-delay="350">
           <p class="stars">★★★★★</p>
-          <p>"Me defendió en un proceso injusto y evitó que tenga antecedentes. Muy recomendado."</p>
+          <p>
+            "Me defendió frente a una acusación injusta y evitó que tenga 
+            antecedentes. Trabajo excepcional."
+          </p>
           <span>- Luis M.</span>
         </div>
       </div>
 
       <!-- Logos -->
       <div class="logos" data-aos="fade-up" data-aos-delay="200">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/58/Poder_Judicial_del_Peru.png" alt="Certificación" />
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6RZxwricx_uJARTvSyICEx7dz7ACOMZeePQ&s" alt="Certificación" />
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnC66Afh5-qw-aj8R89VBJyswsZOshOK6p5g&s" alt="Certificación" />
+        <div class="logo-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/58/Poder_Judicial_del_Peru.png" alt="Poder Judicial" />
+          <small>Poder Judicial del Perú</small>
+        </div>
+
+        <div class="logo-item">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6RZxwricx_uJARTvSyICEx7dz7ACOMZeePQ&s" alt="MP" />
+          <small>Ministerio Público</small>
+        </div>
+
+        <div class="logo-item">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnC66Afh5-qw-aj8R89VBJyswsZOshOK6p5g&s" alt="IC" />
+          <small>Colegio de Abogados</small>
+        </div>
       </div>
 
     </div>
   </section>
 </template>
+
 
 <script>
 import abogadoImg from '@/assets/avatar.jpg'  // ← IMPORTACIÓN CORRECTA
@@ -130,7 +158,7 @@ export default {
 
 <style>
 .confianza {
-    background: #0f0f0f;
+    background: #45556C;
     padding: 80px 20px;
     color: #fff;
 }
@@ -229,8 +257,10 @@ export default {
 
 /* Logos */
 .logos {
-    display: flex;
+    display: grid;
     justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 20px; /* Espacio entre los ítems */  
     gap: 40px;
     margin-top: 40px;
     opacity: 0.8;
@@ -255,4 +285,26 @@ export default {
         text-align: center;
     }
 }
+
+.badge-cert {
+  margin-top: 10px;
+  padding: 6px 14px;
+  display: inline-block;
+  background: rgba(255, 211, 78, 0.15);
+  color: #ffd34e;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.logo-item {
+  text-align: center;
+}
+
+.logo-item small {
+  display: block;
+  margin-top: 5px;
+  opacity: 0.6;
+  font-size: 13px;
+}
+
 </style>

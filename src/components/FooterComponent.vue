@@ -60,8 +60,8 @@ html, body {
 
 /* FOOTER */
 .footer {
-    background: #0e0e0e;
-    color: #fff;
+    background: #F9FAFB;
+    color: #1D293D;
     padding: 60px 20px;
 }
 
@@ -91,13 +91,13 @@ html, body {
 }
 
 .footer-column a {
-    color: #ccc;
+    color: #1D293D;
     text-decoration: none;
     transition: 0.3s;
 }
 
 .footer-column a:hover {
-    color: #fff;
+    color: #1D293D;
 }
 
 /* Redes sociales */
@@ -109,7 +109,7 @@ html, body {
 
 .social-icons a {
     font-size: 24px;
-    color: #fff;
+    color: #1D293D;
     text-decoration: none;
     transition: transform 0.3s;
 }
@@ -122,7 +122,7 @@ html, body {
 .legal-note {
     margin-top: 10px;
     font-size: 12px;
-    color: #ccc;
+    color: #1D293D;
 }
 
 .footer-legal {

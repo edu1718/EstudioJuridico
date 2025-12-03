@@ -9,6 +9,7 @@
   <Contacto/>
   <CTAFinal/>
   <FooterComponent/>
+  <WhatsappFloat telefono="51916650268" mensaje="Hola, necesito asesoría penal." />
   <!-- el resto de secciones -->
 </template>
 
@@ -23,6 +24,7 @@ import Planes from "./components/Planes.vue";
 import Contacto from "./components/Contacto.vue";
 import CTAFinal from "./components/CTAFinal.vue";
 import FooterComponent from "./components/FooterComponent.vue";
+import WhatsappFloat from "./components/WhatsappFloat.vue";
 export default {
   components: {
     Navbar,
@@ -34,7 +36,8 @@ export default {
     Planes,
     Contacto,
     CTAFinal,
-    FooterComponent
+    FooterComponent,
+    WhatsappFloat
   },
 };
 </script>
@@ -42,7 +45,7 @@ export default {
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #0d0d0d;
-    color: #fff;
+    background: #F9FAFB;
+    color: #1D293D;
 }
 </style>

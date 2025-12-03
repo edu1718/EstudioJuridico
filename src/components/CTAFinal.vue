@@ -33,7 +33,8 @@ export default {
 <style>
 .cta-final {
   padding: 80px 0;
-  background: #111;
+  background: #1D293D;
+  color: #fff;
   text-align: center;
 }
 
