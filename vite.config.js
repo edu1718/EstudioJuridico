@@ -6,8 +6,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
-  // 🎯 IMPORTANTE: Agrega esta línea para GitHub Pages
-  // Reemplaza 'BuffetAbogados' con el nombre exacto de tu repositorio si fuera diferente
+  // 🎯 IMPORTANTE: Ruta base para GitHub Pages
   base: '/EstudioJuridico/', 
   plugins: [
     vue(),
@@ -18,4 +17,8 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
+  // 🎯 SEGUNDO CAMBIO: Forzar la salida a la carpeta /docs
+  build: {
+    outDir: 'docs' 
+  }
 })
