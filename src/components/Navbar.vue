@@ -25,12 +25,13 @@
           <i class="bi bi-whatsapp"></i> Consulta Inmediata
         </a>
       </nav>
+      <div class="fondoOscuro" :class="{ activo: menuOpen }" @click="menuOpen = false"></div>
     </div>
   </header>
 </template>
 
 <script>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, watch } from "vue";
 
 export default {
   name: "Navbar",
@@ -43,6 +44,11 @@ export default {
     const toggleMenu = () => {
       menuOpen.value = !menuOpen.value;
     };
+
+    // 🔒 Bloquear scroll
+    watch(menuOpen, (isOpen) => {
+      document.body.style.overflow = isOpen ? "hidden" : "auto";
+    });
 
     onMounted(() => {
       window.addEventListener("scroll", () => {
@@ -81,9 +87,10 @@ export default {
   z-index: 1000;
 }
 
-.navbar.navbar.scrolled .hamburger span{
-   background: #fff;
+.navbar.navbar.scrolled .hamburger span {
+  background: #fff;
 }
+
 /* NAVBAR CON EFECTO GLASS AL HACER SCROLL */
 .navbar.scrolled {
   background: rgba(0, 0, 0, 0.25);
@@ -96,6 +103,7 @@ export default {
 
 .navbar.scrolled .nav-link {
   color: #fff;
+  font-weight: 600;
 }
 
 .navbar.scrolled .logo {
@@ -203,7 +211,8 @@ export default {
 .hamburger.scrolled-ham span {
   background-color: #fff;
 }
-.hamburger.open span{
+
+.hamburger.open span {
   background-color: #fff;
 }
 
@@ -217,6 +226,29 @@ export default {
 
 .hamburger.open span:nth-child(3) {
   transform: translateY(-9px) rotate(-45deg);
+}
+
+.fondoOscuro {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(3px);
+
+  display: none;
+  opacity: 0;
+  transition: opacity .35s ease;
+
+  z-index: 2000;
+  /* debajo del menú (3000) pero sobre todo lo demás */
+}
+
+.fondoOscuro.activo {
+  display: block;
+  opacity: 1;
 }
 
 /* ====== MENÚ MÓVIL DESDE LA DERECHA ====== */

@@ -7,15 +7,8 @@
         Respuesta en minutos. Atención 24/7.
       </p>
 
-      <form
-        class="formulario"
-        ref="formRef"
-        action="https://formsubmit.co/moisesedwarsantonomunoz@gmail.com"
-        method="POST"
-        target="hiddenIframe"
-        data-aos="fade-up"
-        data-aos-delay="300"
-      >
+      <form class="formulario" ref="formRef" action="https://formsubmit.co/moisesedwarsantonomunoz@gmail.com"
+        method="POST" target="hiddenIframe" data-aos="fade-up" data-aos-delay="300">
 
         <!-- Hidden config -->
         <input type="hidden" name="_subject" value="Nuevo caso penal desde tu página web">
@@ -26,40 +19,24 @@
         <!-- NOMBRE -->
         <div class="input-group">
           <label><i class="bi bi-person-fill"></i> Nombre completo</label>
-          <input
-            v-model="nombre"
-            @blur="validarNombre"
-            @focus="tocoNombre = true"
-            type="text"
-            placeholder="Ej: Juan Pérez"
-            name="Nombre"
-          />
+          <input v-model="nombre" @blur="validarNombre" @focus="tocoNombre = true" type="text"
+            placeholder="Ej: Juan Pérez" name="Nombre" :class="{ 'input-error': errorNombre }" />
           <p v-if="errorNombre" class="error-msg">{{ errorNombre }}</p>
         </div>
 
         <!-- WHATSAPP -->
         <div class="input-group">
           <label><i class="bi bi-telephone-fill"></i> Número de WhatsApp</label>
-          <input
-            v-model="whatsapp"
-            @blur="validarWhatsapp"
-            @focus="tocoWhatsapp = true"
-            type="tel"
-            placeholder="916650268"
-            name="Whatsapp"
-          />
+          <input v-model="whatsapp" @blur="validarWhatsapp" @focus="tocoWhatsapp = true" type="tel"
+            placeholder="9XXXXXXXX" name="Whatsapp" :class="{ 'input-error': errorWhatsapp }" />
           <p v-if="errorWhatsapp" class="error-msg">{{ errorWhatsapp }}</p>
         </div>
 
         <!-- TIPO DE CASO -->
         <div class="input-group">
           <label><i class="bi bi-folder-fill"></i> Tipo de caso</label>
-          <select
-            v-model="tipoCaso"
-            @blur="validarCaso"
-            @focus="tocoCaso = true"
-            name="Tipo de caso"
-          >
+          <select v-model="tipoCaso" @blur="validarCaso" @focus="tocoCaso = true" name="Tipo de caso"
+            :class="{ 'input-error': errorCaso }">
             <option value="">Selecciona una opción</option>
             <option>Detención / Flagrancia</option>
             <option>Violencia familiar</option>
@@ -75,17 +52,11 @@
         <!-- MENSAJE -->
         <div class="input-group">
           <label><i class="bi bi-chat-left-text-fill"></i> Describe tu situación</label>
-          <textarea
-            v-model="mensaje"
-            @blur="validarMensaje"
-            @focus="tocoMensaje = true"
-            name="Mensaje"
-            placeholder="Cuéntanos brevemente lo sucedido..."
-          ></textarea>
+          <textarea v-model="mensaje" @blur="validarMensaje" @focus="tocoMensaje = true" name="Mensaje"
+            placeholder="Cuéntanos brevemente lo sucedido..." :class="{ 'input-error': errorMensaje }"></textarea>
           <p v-if="errorMensaje" class="error-msg">{{ errorMensaje }}</p>
         </div>
-
-        <button type="button" class="btn-form" ref="btnRef" @click="enviarFormulario">
+        <button type="button" class="btn-form" ref="btnRef" @click="enviarFormulario" :disabled="!formularioValido">
           <i class="bi bi-send-fill"></i>
           <span>Enviar mi caso</span>
         </button>
@@ -110,7 +81,20 @@
 
 <script setup>
 import Swal from "sweetalert2";
-import { ref } from "vue";
+import { ref, computed } from "vue";
+
+const formularioValido = computed(() => {
+  return (
+    nombre.value.trim().length >= 3 &&
+    /^\d{9}$/.test(whatsapp.value) &&
+    tipoCaso.value !== "" &&
+    mensaje.value.trim().length >= 10 &&
+    !errorNombre.value &&
+    !errorWhatsapp.value &&
+    !errorCaso.value &&
+    !errorMensaje.value
+  );
+});
 
 /* ===== CAMPOS ===== */
 const nombre = ref("");
@@ -239,17 +223,19 @@ const enviarFormulario = () => {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  background: rgba(255,255,255,0.06);
+  background: rgba(255, 255, 255, 0.06);
   padding: 35px;
   border-radius: 14px;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.1);
-  box-shadow: 0 0 25px rgba(0,0,0,0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
 }
-.input-group{
-  display:flex;
+
+.input-group {
+  display: flex;
   flex-direction: column;
 }
+
 .input-group label {
   margin-bottom: 6px;
   font-size: 14px;
@@ -275,6 +261,9 @@ const enviarFormulario = () => {
 .input-group textarea:focus {
   outline: none;
   border: 1px solid #404040;
+}
+.input-error {
+  border: 2px solid #ff4d4d !important;
 }
 
 textarea {
@@ -302,6 +291,11 @@ textarea {
   background: #0d6efd;
 }
 
+.btn-form:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .loader {
   width: 16px;
   height: 16px;
@@ -314,7 +308,9 @@ textarea {
 }
 
 @keyframes girar {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* WhatsApp */
