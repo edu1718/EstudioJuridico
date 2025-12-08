@@ -274,7 +274,6 @@ export default {
 
     transform: translateX(100%);
     transition: transform .45s ease;
-
     /* SE IMPONE SOBRE TODO */
     z-index: 3000;
   }
@@ -282,6 +281,7 @@ export default {
   .nav-links.open .nav-link,
   .nav-links.open .whatsapp-btn {
     color: #fff;
+    font-size: 20px;
     /* O el color que desees para el texto del menú móvil */
   }
 

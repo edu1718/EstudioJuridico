@@ -342,4 +342,9 @@ textarea {
   justify-content: center;
   gap: 6px;
 }
+@media (max-width: 480px) {
+  .formulario{
+    padding: 20px;
+  }
+}
 </style>
